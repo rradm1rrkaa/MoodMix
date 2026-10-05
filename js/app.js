@@ -120,7 +120,7 @@ function showTest() {
     <div class="box glass quiz">
       <div class="bar"><i style="width:${i / QUESTIONS.length * 100}%"></i></div>
       <p style="margin:14px 0 4px;opacity:.7">Вопрос ${i + 1} из ${QUESTIONS.length}</p>
-      <h2 style="text-align:left;font-size:22px">${QUESTIONS[i].text}</h2>
+      <h2 style="text-align:left">${QUESTIONS[i].text}</h2>
       <div class="opts">${ANSWER_LABELS.map((label, k) =>
         `<button onclick="answer(${k + 1})">${label}</button>`).join('')}</div>
     </div>`;

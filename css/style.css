@@ -17,16 +17,16 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Montserrat', system-ui, sans-serif;
   color: var(--c); text-shadow: var(--text-shadow);
-  background: var(--night); min-height: 100vh; overflow-x: hidden;
+  background: var(--night); min-height: 100vh; overflow-x: hidden; font-size: 18px;
 }
-h2 { font-size: 32px; text-align: center; margin-bottom: 36px; }
+h2 { font-size: 46px; text-align: center; margin-bottom: 48px; }
 
 /* ---------- 2. Фон «закат» (небо, солнце, луна, море) ---------- */
 #sky { position: fixed; inset: 0; z-index: -4; }
 
 #sun {
   position: fixed; left: var(--sun-x); top: 24%; z-index: -2;
-  width: min(560px, 90vw); aspect-ratio: 1; transform: translate(-50%, -50%);
+  width: min(680px, 90vw); aspect-ratio: 1; transform: translate(-50%, -50%);
 }
 #sun::after {                   /* ядро */
   content: ''; position: absolute; inset: 27%; border-radius: 50%;
@@ -75,29 +75,28 @@ h2 { font-size: 32px; text-align: center; margin-bottom: 36px; }
   text-shadow: 0 0 6px #fff3, 0 0 14px var(--c), 0 0 32px var(--c), 0 0 64px var(--c), 0 0 110px #b4482a;
   animation: write 3.5s ease-out both, neon 3s 3.5s ease-in-out infinite alternate;
 }
-.hero p { margin-top: 16px; font-size: 18px; opacity: 0; animation: fade 1.5s 3.2s forwards; }
+.hero p { margin-top: 20px; font-size: 26px; opacity: 0; animation: fade 1.5s 3.2s forwards; }
 .hero small { position: absolute; bottom: 32vh; animation: bob 2s infinite; }
 @keyframes write { from { clip-path: inset(-60px 100% -60px -60px); } to { clip-path: inset(-60px); } }
 @keyframes neon  { to { filter: brightness(1.15) drop-shadow(0 0 12px var(--c)); } }
 @keyframes fade  { to { opacity: 1; } }
 @keyframes bob   { 50% { transform: translateY(8px); } }
 
-section { max-width: 1050px; margin: 0 auto; padding: 80px 24px; }
+section { max-width: 1840px; margin: 0 auto; padding: 100px 5vw; }
 .soft { background: radial-gradient(ellipse at center, rgba(6,10,40,.6), transparent 72%); }  /* мягкая подложка без рамок */
 
 /* О проекте: логотип в рамке слева, описание у правого края */
-.about { display: grid; grid-template-columns: minmax(260px, 440px) 1fr; gap: 40px; align-items: center; max-width: 1400px; padding: 80px 5vw; }
-.about-text { justify-self: end; max-width: 560px; }
+.about { display: grid; grid-template-columns: minmax(320px, 560px) 1fr; gap: 80px; align-items: center; }
+.about-text { justify-self: end; max-width: 780px; }
 .logo-frame { order: -1; padding: 28px; border-radius: 22px; background: rgba(7,11,46,.88); border: 2px solid var(--c); box-shadow: 0 0 24px rgba(217,119,87,.45), var(--box-shadow); }
 .about h2 { text-align: left; }
-.about p { line-height: 1.8; margin-bottom: 14px; font-size: 17px; }
+.about p { line-height: 1.8; margin-bottom: 18px; font-size: 21px; }
 .logo-frame img { display: block; width: 100%; }
 
 /* Отзывы: прижаты к левому краю */
-.reviews { max-width: 1400px; padding: 80px 5vw; }
 .reviews h2 { text-align: left; }
 
-.review { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; width: min(720px, 100%); margin-bottom: 70px; }
+.review { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; width: min(900px, 100%); margin-bottom: 90px; }
 /* «Хаотичное» расположение: у каждого отзыва свой сдвиг, отступ и порядок */
 .review:nth-of-type(1) { margin-left: 0; }
 .review:nth-of-type(2) { margin-left: auto; margin-right: 4%; margin-bottom: 40px; }
@@ -105,19 +104,19 @@ section { max-width: 1050px; margin: 0 auto; padding: 80px 24px; }
 .review:nth-of-type(4) { margin-left: auto; margin-bottom: 50px; }
 .review:nth-of-type(5) { margin-left: 5%; }
 .review:nth-of-type(2) .review-media, .review:nth-of-type(4) .review-media { order: 2; }
-.review:nth-of-type(2) .photo { height: 210px; }
-.review:nth-of-type(3) .photo { height: 270px; }
-.review:nth-of-type(4) .photo { height: 230px; }
-.review-user { font-weight: 700; font-size: 18px; margin-bottom: 12px; }
-.photo { height: 250px; border-radius: 18px; display: grid; place-items: center; font-size: 72px; box-shadow: var(--box-shadow); }
-.review-body h3 { font-size: 24px; margin-bottom: 12px; }
-.review-body p { line-height: 1.7; font-size: 16px; }
-.stars { color: #ffd23f; font-size: 26px; letter-spacing: 4px; margin-top: 14px; text-shadow: 0 0 14px rgba(255,210,63,.7); }
+.review:nth-of-type(2) .photo { height: 270px; }
+.review:nth-of-type(3) .photo { height: 360px; }
+.review:nth-of-type(4) .photo { height: 300px; }
+.review-user { font-weight: 700; font-size: 22px; margin-bottom: 14px; }
+.photo { height: 320px; border-radius: 20px; display: grid; place-items: center; font-size: 90px; box-shadow: var(--box-shadow); }
+.review-body h3 { font-size: 32px; margin-bottom: 14px; }
+.review-body p { line-height: 1.7; font-size: 19px; }
+.stars { color: #ffd23f; font-size: 34px; letter-spacing: 5px; margin-top: 16px; text-shadow: 0 0 14px rgba(255,210,63,.7); }
 
 .cta { text-align: center; }
-footer { text-align: center; padding: 50px 20px 60px; border-top: 1px solid rgba(217,119,87,.5); background: linear-gradient(transparent, rgba(0,0,0,.6)); }
-footer h3 { letter-spacing: 3px; margin-bottom: 20px; }
-footer a { color: var(--c); margin: 6px 14px; display: inline-block; text-decoration: none; }
+footer { text-align: center; padding: 70px 20px 80px; font-size: 20px; border-top: 1px solid rgba(217,119,87,.5); background: linear-gradient(transparent, rgba(0,0,0,.6)); }
+footer h3 { letter-spacing: 4px; font-size: 28px; margin-bottom: 26px; }
+footer a { color: var(--c); margin: 8px 20px; display: inline-block; text-decoration: none; }
 footer a:hover { color: var(--c-light); text-shadow: 0 0 14px var(--c); }
 .fade { opacity: 0; transform: translateY(40px); transition: 1s; }
 .fade.in { opacity: 1; transform: none; }
@@ -130,22 +129,22 @@ footer a:hover { color: var(--c-light); text-shadow: 0 0 14px var(--c); }
   box-shadow: 0 0 16px rgba(217,119,87,.5), inset 0 0 14px rgba(217,119,87,.18); transition: .25s;
 }
 .btn:hover { background: var(--c); color: #1b0f0a; transform: translateY(-3px); box-shadow: 0 10px 34px rgba(217,119,87,.75); }
-.btn.big { font-size: 24px; padding: 28px 64px; border-radius: 6px; letter-spacing: 1px; }
+.btn.big { font-size: 34px; padding: 38px 110px; border-radius: 6px; letter-spacing: 1px; }
 .btn.ghost { background: rgba(0,0,0,.25); box-shadow: 0 4px 14px rgba(0,0,0,.4); }
 .btn.sm { padding: 8px 14px; font-size: 13px; }
 
 /* ---------- 6. Сервис (app.html) ---------- */
 .top { display: flex; justify-content: space-between; align-items: center; padding: 12px 26px; position: sticky; top: 0; z-index: 5; background: rgba(7,11,46,.78); backdrop-filter: blur(8px); box-shadow: 0 6px 24px rgba(0,0,0,.5); }
-.top img { height: 52px; }
+.top img { height: 64px; }
 .top nav { display: flex; gap: 10px; flex-wrap: wrap; }
-main { max-width: 1050px; margin: 0 auto; padding: 30px 18px; }
+main { max-width: 1700px; margin: 0 auto; padding: 40px 4vw; }
 main.center { display: grid; place-items: center; min-height: calc(100vh - 76px); }
 
 .glass { background: rgba(8,12,40,.68); border: 1px solid rgba(217,119,87,.3); border-radius: 20px; padding: 26px; box-shadow: var(--box-shadow); backdrop-filter: blur(8px); }
 .box { width: min(460px, 92vw); }
 .box h2 { margin-bottom: 16px; }
-.quiz { width: min(580px, 92vw); height: 410px; display: flex; flex-direction: column; justify-content: space-between; }   /* окно теста — фиксированного размера */
-.quiz h2 { min-height: 96px; display: flex; align-items: center; margin: 0; }
+.quiz { width: min(700px, 92vw); height: 470px; display: flex; flex-direction: column; justify-content: space-between; }   /* окно теста — фиксированного размера */
+.quiz h2 { font-size: 28px; min-height: 110px; display: flex; align-items: center; margin: 0; }
 .quiz .opts { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; }
 
 input, select, textarea { width: 100%; padding: 12px; margin: 6px 0; border-radius: 10px; border: 1px solid var(--c); background: rgba(0,0,0,.35); color: var(--c-light); font: inherit; text-shadow: none; }
@@ -158,18 +157,18 @@ label { font-size: 13px; }
 .bar i { display: block; height: 100%; background: var(--c); box-shadow: 0 0 12px var(--c); transition: .3s; }
 
 .filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 22px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 26px; }
 .card { cursor: pointer; padding: 0; overflow: hidden; transition: .25s; }
 .card:hover { transform: translateY(-5px); }
-.card .ph { height: 130px; display: grid; place-items: center; font-size: 56px; }
-.card .in { padding: 14px; font-size: 13px; line-height: 1.55; }
+.card .ph { height: 170px; display: grid; place-items: center; font-size: 56px; }
+.card .in { padding: 18px; font-size: 15px; line-height: 1.55; }
 .st { font-weight: 700; }
 .open { color: #6dff9c; }
 .closed { color: #ff7a7a; }
 
 .modal { position: fixed; inset: 0; background: rgba(0,0,10,.7); display: none; place-items: center; z-index: 20; padding: 14px; overflow: auto; }
 .modal.on { display: grid; }
-.mc { background: #0f1648; max-width: 560px; width: 100%; border-radius: 20px; padding: 22px; border: 1px solid var(--c); box-shadow: var(--box-shadow); max-height: 92vh; overflow: auto; }
+.mc { background: #0f1648; max-width: 680px; width: 100%; border-radius: 20px; padding: 22px; border: 1px solid var(--c); box-shadow: var(--box-shadow); max-height: 92vh; overflow: auto; }
 .car { position: relative; }
 .car .ph { height: 200px; border-radius: 14px; display: grid; place-items: center; font-size: 64px; }
 .car button { position: absolute; top: 50%; background: rgba(0,0,0,.55); color: var(--c-light); border: 0; border-radius: 50%; width: 34px; height: 34px; cursor: pointer; }

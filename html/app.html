@@ -1,12 +1,66 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MoodMix — сервис</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css"></head><body>
-<div id="sky"></div><div id="sun"></div><div id="moon"></div><div id="sea"></div>
-<div class="top"><a href="index.html"><img src="../img/logo.png" alt="MoodMix"></a><nav id="nav"></nav></div>
-<main id="app"></main>
-<div class="modal" id="modal"></div>
-<script src="../js/landing.js"></script>
-<script src="../js/data.js"></script>
-<script src="../js/app.js"></script></body></html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoodMix — сервис</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-scene="sunset">
+  <!-- Фон «закат» (по умолчанию) -->
+  <div id="sky"></div><div id="sun"></div><div id="moon"></div><div id="sea"></div>
+
+  <!-- Фон «пляж с пальмами» — показывается на странице теста -->
+  <div id="beach">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="bSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#10224f"/><stop offset=".55" stop-color="#2f6a9c"/><stop offset="1" stop-color="#f4a95e"/>
+        </linearGradient>
+        <linearGradient id="bSea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1b8fa3"/><stop offset="1" stop-color="#0b4f6c"/>
+        </linearGradient>
+        <linearGradient id="bSand" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f1d3a0"/><stop offset="1" stop-color="#c89a5e"/>
+        </linearGradient>
+        <radialGradient id="bSun"><stop offset="0" stop-color="#fff2c6"/><stop offset=".4" stop-color="#ffc46b" stop-opacity=".8"/><stop offset="1" stop-color="#ff8a3c" stop-opacity="0"/></radialGradient>
+        <!-- Пальма: ствол + 7 листьев. Основание ствола в точке (100, 300) -->
+        <g id="palm">
+          <path d="M100 300 Q112 200 90 110" stroke="#2a1b12" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <g fill="#0d3a2c">
+            <path id="leaf" d="M90 110 C120 70 170 70 195 105 C160 88 125 92 90 110Z"/>
+            <use href="#leaf" transform="rotate(50 90 110)"/><use href="#leaf" transform="rotate(100 90 110)"/>
+            <use href="#leaf" transform="rotate(150 90 110)"/><use href="#leaf" transform="rotate(200 90 110)"/>
+            <use href="#leaf" transform="rotate(255 90 110)"/><use href="#leaf" transform="rotate(305 90 110)"/>
+          </g>
+        </g>
+      </defs>
+      <rect width="1600" height="620" fill="url(#bSky)"/>
+      <circle cx="1100" cy="560" r="230" fill="url(#bSun)"/>
+      <rect y="560" width="1600" height="160" fill="url(#bSea)"/>
+      <g fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2">
+        <path d="M0 600 Q40 590 80 600 T160 600 T240 600 T320 600 T400 600 T480 600 T560 600 T640 600 T720 600 T800 600 T880 600 T960 600 T1040 600 T1120 600 T1200 600 T1280 600 T1360 600 T1440 600 T1520 600 T1600 600"/>
+        <path d="M0 650 Q60 636 120 650 T240 650 T360 650 T480 650 T600 650 T720 650 T840 650 T960 650 T1080 650 T1200 650 T1320 650 T1440 650 T1560 650"/>
+      </g>
+      <path d="M0 700 Q200 680 400 705 T800 700 T1200 705 T1600 695 L1600 900 L0 900Z" fill="url(#bSand)"/>
+      <path d="M0 700 Q200 680 400 705 T800 700 T1200 705 T1600 695" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="5"/>
+      <use href="#palm" transform="translate(-120 120) scale(2.6)"/>
+      <use href="#palm" transform="translate(1680 240) scale(-2.2 2.2)"/>
+      <use href="#palm" transform="translate(220 480) scale(1.4)"/>
+      <use href="#palm" transform="translate(1360 570) scale(-1.1 1.1)"/>
+    </svg>
+  </div>
+
+  <div class="top">
+    <a href="index.html"><img src="../img/logo.png" alt="MoodMix"></a>
+    <nav id="nav"></nav>
+  </div>
+  <main id="app"></main>
+  <div class="modal" id="modal"></div>
+
+  <script src="../js/landing.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

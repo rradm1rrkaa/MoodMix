@@ -30,6 +30,12 @@ const findPlace  = id => PLACES.find(p => p.id === id);
 const stars      = n => '★'.repeat(n);
 const parseTime  = str => { const [h, m] = str.split(':'); return +h + m / 60; };
 
+// Фон и раскладка: scene — 'sunset' | 'beach'; centered — контент по центру экрана
+function setView(scene, centered) {
+  document.body.dataset.scene = scene;
+  appEl.className = centered ? 'center' : '';
+}
+
 // Час, на который смотрим: выбранный в фильтре или текущий
 function targetHour() {
   if (state.filters.time) return parseTime(state.filters.time);
@@ -67,6 +73,7 @@ function logout() { DB.set('session', null); start(); }
 
 function showAuth(mode) {
   const isReg = mode === 'register';
+  setView('sunset', true);
   appEl.innerHTML = `
     <div class="box glass">
       <h2>${isReg ? 'Регистрация' : 'Вход'}</h2>
@@ -108,8 +115,9 @@ const ANSWER_LABELS = ['Нет', 'Скорее нет', 'Средне', 'Ско�
 function showTest() {
   const i = state.question;
   if (i >= QUESTIONS.length) return finishTest();
+  setView('beach', true);
   appEl.innerHTML = `
-    <div class="box glass">
+    <div class="box glass quiz">
       <div class="bar"><i style="width:${i / QUESTIONS.length * 100}%"></i></div>
       <p style="margin:14px 0 4px;opacity:.7">Вопрос ${i + 1} из ${QUESTIONS.length}</p>
       <h2 style="text-align:left;font-size:22px">${QUESTIONS[i].text}</h2>
@@ -141,6 +149,7 @@ function finishTest() {
   saveUser(user);
   state.question = 0; state.answers = [];
   renderNav();
+  setView('beach', true);
   appEl.innerHTML = `
     <div class="box glass" style="text-align:center">
       <h2>Ваше настроение</h2>
@@ -228,6 +237,7 @@ function renderPlaceCard(place, user, hour) {
 function showPlaces() {
   renderNav();
   closeModal();
+  setView('sunset', false);
   const user = currentUser(), hour = targetHour();
   const cards = getVisiblePlaces(user, hour).map(p => renderPlaceCard(p, user, hour)).join('');
   appEl.innerHTML = `
@@ -344,6 +354,7 @@ function submitReview(id) {
 
 /* ---------- 7. Профиль ---------- */
 function showProfile() {
+  setView('sunset', false);
   const user = currentUser();
   const history = user.history.map(h => {
     const p = findPlace(h.placeId);
